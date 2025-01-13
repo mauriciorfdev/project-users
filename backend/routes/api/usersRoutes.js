@@ -27,17 +27,29 @@ router.get('/:id', async (req, res) => {
 
 //DESC      post a new user
 router.post('/', async (req, res) => {
-    const newUser = new UserModel({...req.body})
-    const insertedUser = await newUser.save()
-    return res.status(201).json(insertedUser)
+    try {
+        const { name } = req.body
+        if (!name){
+            return res.status(400).json({msg: 'Bad Request: name not found'})
+        }
+        const newUser = new UserModel({ name })
+        const insertedUser = await newUser.save()
+        return res.status(201).json({inserted: insertedUser})
+    } catch (error) {
+        return res.status.json({msg: 'Internal Server Error', error: error.message})
+    }
 })
 
 
 //update user by id
 router.put('/:id', async (req, res) => {
     const id = req.params.id
+    const { name } = req.body
     try {
-        const data = await UserModel.findByIdAndUpdate(id, req.body, {new:true})
+        if (!name){
+            return res.status(400).json({msg: 'Bad Request name not found'})
+        }
+        const data = await UserModel.findByIdAndUpdate(id, {name}, {new:true})
         if(!data){
             return res.status(404).json({msg: `User  with id ${id} not found for update`})
         }
