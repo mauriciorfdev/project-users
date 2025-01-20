@@ -2,8 +2,8 @@ import { useState } from 'react'
 //import './App.css'
 
 import { Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import CreatePage from './pages/CreatePage'
+import UserList from './components/UserList'
+import AddUser from './components/AddUser'
 import NoMatchPage from './pages/NoMatchPage'
 import NavBar from './components/NavBar'
 /* import ToggleMode from './components/ToggleMode' */
@@ -15,8 +15,8 @@ function App() {
       <NavBar></NavBar>
       {/* <ToggleMode></ToggleMode> */}
       <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/create' element={<CreatePage />} />
+        <Route path='/' element={<UserList />} />
+        <Route path='/create' element={<AddUser />} />
         <Route path='*' element={<NoMatchPage />}></Route>
       </Routes>
     </>
