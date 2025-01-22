@@ -2,6 +2,7 @@ const { UserModel } = require('../models/userModel')
 
 
 //DESC      get users
+//ROUTE     GET /api/users
 async function getUsers(req, res) {
     try {
         const users = await UserModel.find();
@@ -13,6 +14,7 @@ async function getUsers(req, res) {
 
 
 //DESC      get user by id
+//ROUTE     GET /api/users/:id
 async function getSingleUser(req, res) {
     const id = req.params.id;
     const user = await UserModel.findById(id);
@@ -28,6 +30,7 @@ async function getSingleUser(req, res) {
 
 
 //DESC      post user
+//ROUTE     POST /api/users
 async function setUser(req, res) {
     try {
         const { name } = req.body;
@@ -44,6 +47,7 @@ async function setUser(req, res) {
 
 
 //DESC      update user
+//ROUTE     PUT /api/users/:id
 async function updateUser(req, res) {
     const id = req.params.id;
     const { name } = req.body;
@@ -63,6 +67,7 @@ async function updateUser(req, res) {
 
 
 //DESC      delete user
+//ROUTE     DELETE /api/users/:id
 async function deleteUser(req, res) {
     const { id } = req.params;
     try {
