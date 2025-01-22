@@ -2,10 +2,11 @@ import { useState } from 'react'
 //import './App.css'
 
 import { Routes, Route } from 'react-router-dom'
-import UserList from './components/UserList'
+import UsersList from './components/UsersList'
 import AddUser from './components/AddUser'
 import NoMatchPage from './pages/NoMatchPage'
 import NavBar from './components/NavBar'
+import UpdateUser from './components/UpdateUser'
 /* import ToggleMode from './components/ToggleMode' */
 
 function App() {
@@ -15,8 +16,9 @@ function App() {
       <NavBar></NavBar>
       {/* <ToggleMode></ToggleMode> */}
       <Routes>
-        <Route path='/' element={<UserList />} />
-        <Route path='/create' element={<AddUser />} />
+        <Route path='/' element={<UsersList />} />
+        <Route path='/user' element={<AddUser />} />
+        <Route path='/user/:id' element={<UpdateUser />} />
         <Route path='*' element={<NoMatchPage />}></Route>
       </Routes>
     </>

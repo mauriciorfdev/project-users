@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
+import { useNavigate } from 'react-router-dom'
 
-const UserList = () => {
+const UsersList = () => {
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect( () => {
     const getUsers = async () => {
@@ -19,6 +21,10 @@ const UserList = () => {
     };
     getUsers();
   }, [] )
+
+  function handleUpdate(userId){
+    navigate(`/user/${userId}`)
+  }
 
   return (<>
     <h2>Users List</h2>
@@ -37,7 +43,7 @@ const UserList = () => {
             <td>{user.name}</td>
             <td>mail@email.com</td>
             <td>
-              <Button variant='dark'>Update</Button>{' '}
+              <Button variant='dark' onClick={() => handleUpdate(user._id)}>Update</Button>{' '}
               <Button variant='danger'>Delete</Button>
             </td>
           </tr>
@@ -47,4 +53,4 @@ const UserList = () => {
   </>)
 }
 
-export default UserList
+export default UsersList
