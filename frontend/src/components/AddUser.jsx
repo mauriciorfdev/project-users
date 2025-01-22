@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { useNavigate } from 'react-router-dom'
 
 const AddUser = () => {
   const [formData, setFormData] = useState({
     name: '',
   })
+  const navigate = useNavigate();
 
   async function handleSubmit(e){
     e.preventDefault();
@@ -18,6 +20,7 @@ const AddUser = () => {
     })
     const data = await response.json()
     console.log(data)
+    navigate('/')
   }
 
   function handleChange(e){
