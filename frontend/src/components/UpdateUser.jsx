@@ -34,16 +34,20 @@ const UpdateUser = () => {
 
 async function handleSumbit(e){
   e.preventDefault();
-  const resp = await fetch(`http://localhost:5000/api/users/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  })
-  const data = await resp.json()
-  console.log(data)
-  navigate('/')
+  try {
+    const resp = await fetch(`http://localhost:5000/api/users/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    const data = await resp.json()
+    console.log(data)
+    navigate('/')
+  } catch (error) {
+    console.error(error.message)
+  }
 }
 
 

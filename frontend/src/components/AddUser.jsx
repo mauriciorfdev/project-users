@@ -11,16 +11,20 @@ const AddUser = () => {
 
   async function handleSubmit(e){
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/api/users', {
-      method: "POST",
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    })
-    const data = await response.json()
-    console.log(data)
-    navigate('/')
+    try {
+      const response = await fetch('http://localhost:5000/api/users', {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+      const data = await response.json()
+      console.log(data)
+      navigate('/')
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 
   function handleChange(e){

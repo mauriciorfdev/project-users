@@ -8,22 +8,36 @@ const UsersList = () => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
+  const getUsers = async () => {
+    try {
+      const resp = await fetch('http://localhost:5000/api/users');
+      const data = await resp.json();
+      console.log(data)
+      setUsers(data);
+    } catch (error) {
+      console.error('error while fetching users: ', error.message)
+    }
+  }
+
   useEffect( () => {
-    const getUsers = async () => {
-      try {
-        const resp = await fetch('http://localhost:5000/api/users');
-        const data = await resp.json();
-        console.log(data)
-        setUsers(data);
-      } catch (error) {
-        console.error('error while fetching users: ', error.message)
-      }
-    };
     getUsers();
   }, [] )
 
   function handleUpdate(userId){
     navigate(`/user/${userId}`)
+  }
+
+  async function handleDelete(userId){
+    try {
+      const resp = await fetch(`http://localhost:5000/api/users/${userId}`,{
+        method: 'DELETE'
+      })
+      const data = await resp.json();
+      console.log(data)
+      getUsers();
+    } catch (error) {
+      console.error("Error while deleting users: ", error.message)
+    }
   }
 
   return (<>
@@ -44,7 +58,7 @@ const UsersList = () => {
             <td>mail@email.com</td>
             <td>
               <Button variant='dark' onClick={() => handleUpdate(user._id)}>Update</Button>{' '}
-              <Button variant='danger'>Delete</Button>
+              <Button variant='danger' onClick={() => handleDelete(user._id)}>Delete</Button>
             </td>
           </tr>
         )}
