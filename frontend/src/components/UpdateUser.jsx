@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import { useNavigate, useParams } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
@@ -10,6 +10,20 @@ const UpdateUser = () => {
   })
   const {id} = useParams()
   const navigate = useNavigate()
+
+  useEffect( () => {
+    const getUser = async () => {
+      try {
+        const resp = await fetch(`http://localhost:5000/api/users/${id}`);
+        const data = await resp.json();
+        console.log(data);
+        setFormData(data);
+      } catch (error) {
+        console.error('error while fetching users: ', error.message)
+      }
+    };
+    getUser();
+  }, [] )
 
   function handleChange(e){
     setFormData({
