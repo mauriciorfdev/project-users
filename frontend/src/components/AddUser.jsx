@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const AddUser = () => {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
   })
   const navigate = useNavigate();
 
@@ -27,10 +28,12 @@ const AddUser = () => {
     }
   }
 
-  function handleChange(e){
+  function handleInputChange(e){
+    const name = e.target.name;
+    const value = e.target.value;
     setFormData({
       ...formData,
-      name: e.target.value,
+      [name]: value,
     })
   }
 
@@ -40,10 +43,21 @@ const AddUser = () => {
       <Form.Group className='mb-3' controlId='formBasicName'>
         <Form.Label>Name: </Form.Label>
         <Form.Control 
-          type='name' 
+          type='text'
+          name='name'
           value={formData.name}
-          onChange={handleChange}
+          onChange={handleInputChange}
           placeholder='Enter name'></Form.Control>
+      </Form.Group>
+      <Form.Group className='mb-3' controlId='formBasicEmail'>
+        <Form.Label>Email: </Form.Label>
+        <Form.Control
+        type='email'
+        name='email'
+        value={formData.email}
+        onChange={handleInputChange}
+        placeholder='Enter email'
+        ></Form.Control>
       </Form.Group>
       
       <Button variant='primary' type='submit'>Submit</Button>

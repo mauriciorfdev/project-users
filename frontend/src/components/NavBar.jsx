@@ -14,7 +14,6 @@ const NavBarComp = () => {
           <Nav className='me-auto'>
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
             <Nav.Link as={Link} to='/user'>Create</Nav.Link>
-            <Nav.Link as={Link} to='/x'>x</Nav.Link>
           </Nav>
         </NavBar.Collapse>
       </Container>

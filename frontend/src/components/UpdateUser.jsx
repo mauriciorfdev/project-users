@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 const UpdateUser = () => {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
   })
   const {id} = useParams()
   const navigate = useNavigate()
@@ -25,10 +26,12 @@ const UpdateUser = () => {
     getUser();
   }, [] )
 
-  function handleChange(e){
+  function handleInputChange(e){
+    const name = e.target.name;
+    const value = e.target.value;
     setFormData({
       ...formData,
-      name: e.target.value,
+      [name]: value,
     })
   }
 
@@ -57,10 +60,21 @@ async function handleSumbit(e){
       <Form.Group className='mb-3' controlId='formUpdName'>
         <Form.Label>Name: </Form.Label>
         <Form.Control
-          type='name'
+          type='text'
+          name='name'
           value={formData.name}
-          onChange={handleChange}
+          onChange={handleInputChange}
           placeholder='Enter new name'
+        ></Form.Control>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Email: </Form.Label>
+        <Form.Control
+          type='email'
+          name='email'
+          value={formData.email}
+          onChange={handleInputChange}
+          placeholder='Enter new email'
         ></Form.Control>
       </Form.Group>
 

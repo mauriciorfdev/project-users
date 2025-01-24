@@ -55,7 +55,7 @@ const UsersList = () => {
         {users.map(user => 
           <tr key={user._id}>
             <td>{user.name}</td>
-            <td>mail@email.com</td>
+            <td>{user.email}</td>
             <td>
               <Button variant='dark' onClick={() => handleUpdate(user._id)}>Update</Button>{' '}
               <Button variant='danger' onClick={() => handleDelete(user._id)}>Delete</Button>
