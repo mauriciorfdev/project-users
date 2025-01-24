@@ -33,11 +33,11 @@ async function getSingleUser(req, res) {
 //ROUTE     POST /api/users
 async function setUser(req, res) {
     try {
-        const { name } = req.body;
-        if (!name) {
-            return res.status(400).json({ msg: 'Bad Request: name not found or empty' });
+        const { name, email } = req.body;
+        if (!name || !email) {
+            return res.status(400).json({ msg: 'Bad Request: name/email not found or empty' });
         }
-        const newUser = new UserModel({ name });
+        const newUser = new UserModel({ name, email });
         const insertedUser = await newUser.save();
         return res.status(201).json({ inserted: insertedUser });
     } catch (error) {
@@ -50,12 +50,12 @@ async function setUser(req, res) {
 //ROUTE     PUT /api/users/:id
 async function updateUser(req, res) {
     const id = req.params.id;
-    const { name } = req.body;
+    const { name, email } = req.body;
     try {
-        if (!name) {
+        if (!name || !email) {
             return res.status(400).json({ msg: 'Bad Request name not found or empty' });
         }
-        const data = await UserModel.findByIdAndUpdate(id, { name }, { new: true });
+        const data = await UserModel.findByIdAndUpdate(id, { name, email }, { new: true });
         if (!data) {
             return res.status(404).json({ msg: `User  with id ${id} not found for update` });
         }
