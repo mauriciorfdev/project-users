@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 import UsersList from './components/UsersList'
 import AddUser from './components/AddUser'
 import NoMatchPage from './pages/NoMatchPage'
+import HomePage from './pages/HomePage'
 import NavBar from './components/NavBar'
 import UpdateUser from './components/UpdateUser'
 /* import ToggleMode from './components/ToggleMode' */
@@ -16,7 +17,7 @@ function App() {
       <NavBar></NavBar>
       {/* <ToggleMode></ToggleMode> */}
       <Routes>
-        <Route path='/' element={<UsersList />} />
+        <Route path='/' element={<HomePage />} />
         <Route path='/user' element={<AddUser />} />
         <Route path='/user/:id' element={<UpdateUser />} />
         <Route path='*' element={<NoMatchPage />}></Route>

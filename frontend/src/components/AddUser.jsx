@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom'
+import Container from 'react-bootstrap/esm/Container'
 
 const AddUser = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ const AddUser = () => {
   })
   const navigate = useNavigate();
 
-  async function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault();
     try {
       const response = await fetch('http://localhost:5000/api/users', {
@@ -28,7 +29,7 @@ const AddUser = () => {
     }
   }
 
-  function handleInputChange(e){
+  function handleInputChange(e) {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({
@@ -38,30 +39,32 @@ const AddUser = () => {
   }
 
   return (<>
-    <h2>AddUser</h2>
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className='mb-3' controlId='formBasicName'>
-        <Form.Label>Name: </Form.Label>
-        <Form.Control 
-          type='text'
-          name='name'
-          value={formData.name}
-          onChange={handleInputChange}
-          placeholder='Enter name'></Form.Control>
-      </Form.Group>
-      <Form.Group className='mb-3' controlId='formBasicEmail'>
-        <Form.Label>Email: </Form.Label>
-        <Form.Control
-        type='email'
-        name='email'
-        value={formData.email}
-        onChange={handleInputChange}
-        placeholder='Enter email'
-        ></Form.Control>
-      </Form.Group>
-      
-      <Button variant='primary' type='submit'>Submit</Button>
-    </Form>
+    <Container>
+      <h2>Add New User</h2>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className='mb-3' controlId='formBasicName'>
+          <Form.Label>Name: </Form.Label>
+          <Form.Control
+            type='text'
+            name='name'
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder='Enter name'></Form.Control>
+        </Form.Group>
+        <Form.Group className='mb-3' controlId='formBasicEmail'>
+          <Form.Label>Email: </Form.Label>
+          <Form.Control
+            type='email'
+            name='email'
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder='Enter email'
+          ></Form.Control>
+        </Form.Group>
+
+        <Button variant='primary' type='submit'>Submit</Button>
+      </Form>
+    </Container>
   </>)
 }
 

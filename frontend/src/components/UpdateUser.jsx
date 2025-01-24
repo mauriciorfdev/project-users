@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import { useNavigate, useParams } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/esm/Container'
 
 
 const UpdateUser = () => {
@@ -55,31 +56,36 @@ async function handleSumbit(e){
 
 
   return (<>
-    <h2>UpdateUser</h2>
-    <Form onSubmit={handleSumbit}>
-      <Form.Group className='mb-3' controlId='formUpdName'>
-        <Form.Label>Name: </Form.Label>
-        <Form.Control
-          type='text'
-          name='name'
-          value={formData.name}
-          onChange={handleInputChange}
-          placeholder='Enter new name'
-        ></Form.Control>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Email: </Form.Label>
-        <Form.Control
-          type='email'
-          name='email'
-          value={formData.email}
-          onChange={handleInputChange}
-          placeholder='Enter new email'
-        ></Form.Control>
-      </Form.Group>
-
-      <Button type='submit'>Update!</Button>
-    </Form>
+    <Container>
+      <h2>Update User</h2>
+      
+      <Form onSubmit={handleSumbit}>
+        <Form.Group className='mb-3' controlId='formUpdName'>
+          <Form.Label>Name: </Form.Label>
+          <Form.Control
+            type='text'
+            name='name'
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder='Enter new name'
+          ></Form.Control>
+        </Form.Group>
+        
+        <Form.Group className='mb-3'>
+          <Form.Label>Email: </Form.Label>
+          <Form.Control
+            type='email'
+            name='email'
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder='Enter new email'
+          ></Form.Control>
+        </Form.Group>
+  
+        <Button type='submit'>Update!</Button>
+      </Form>
+      
+    </Container>
   </>)
 }
 

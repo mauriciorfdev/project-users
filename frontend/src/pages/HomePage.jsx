@@ -1,9 +1,10 @@
 import React from 'react'
+import UsersList from '../components/UsersList'
 
 const HomePage = () => {
-    return(
-        <div>HomePage</div>
-    )
+  return (<>
+    <UsersList></UsersList>
+  </>)
 }
 
 export default HomePage
