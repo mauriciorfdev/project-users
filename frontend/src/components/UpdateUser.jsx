@@ -56,7 +56,7 @@ async function handleSumbit(e){
 
 
   return (<>
-    <Container>
+    <Container className='mt-3'>
       <h2>Update User</h2>
       
       <Form onSubmit={handleSumbit}>

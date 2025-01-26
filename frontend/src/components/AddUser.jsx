@@ -39,7 +39,7 @@ const AddUser = () => {
   }
 
   return (<>
-    <Container>
+    <Container className='mt-3'>
       <h2>Add New User</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group className='mb-3' controlId='formBasicName'>

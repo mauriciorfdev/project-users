@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom'
+import Spinner from 'react-bootstrap/Spinner'
 
 const UsersList = () => {
 
   const [users, setUsers] = useState([]);
+  const [isDataLoading, setIsDataLoading] = useState(false)
   const navigate = useNavigate();
 
   const getUsers = async () => {
     try {
+      setIsDataLoading(true)
       const resp = await fetch('http://localhost:5000/api/users');
       const data = await resp.json();
       console.log(data)
       setUsers(data);
+      setIsDataLoading(false)
     } catch (error) {
       console.error('error while fetching users: ', error.message)
     }
@@ -42,6 +46,8 @@ const UsersList = () => {
 
   return (<>
     <h2>Users List</h2>
+
+    {isDataLoading && <Spinner/> }
 
     <Table striped bordered hover>
       <thead>
