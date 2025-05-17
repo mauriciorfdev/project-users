@@ -65,10 +65,15 @@ const UsersList = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  <Button variant='dark' onClick={() => handleUpdate(user._id)}>
+                  <Button
+                    className='mt-1'
+                    variant='dark'
+                    onClick={() => handleUpdate(user._id)}
+                  >
                     Update
                   </Button>{' '}
                   <Button
+                    className='mt-1'
                     variant='danger'
                     onClick={() => handleDelete(user._id)}
                   >
