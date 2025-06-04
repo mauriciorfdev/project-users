@@ -9,13 +9,13 @@ const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(false);
   const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const getUsers = async () => {
     try {
       setIsDataLoading(true);
-      const resp = await fetch('http://localhost:5000/api/users');
+      const resp = await fetch(`${API_BASE_URL}/api/users`);
       const data = await resp.json();
-      console.log(data);
       setUsers(data);
       setIsDataLoading(false);
     } catch (error) {
@@ -33,11 +33,9 @@ const UsersList = () => {
 
   async function handleDelete(userId) {
     try {
-      const resp = await fetch(`http://localhost:5000/api/users/${userId}`, {
+      const resp = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
         method: 'DELETE',
       });
-      const data = await resp.json();
-      console.log(data);
       getUsers();
     } catch (error) {
       console.error('Error while deleting users: ', error.message);

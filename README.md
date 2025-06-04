@@ -14,6 +14,10 @@ Simple application using MongoDB, ExpressJS, React & NodeJS. The API can create,
 
 ## Installation
 
+> Backend Directory: _`~/Desktop/project-users`_
+
+> Frontend Directory: _`~/Desktop/project-users/frontend`_
+
 1. Clone the repo:
 
 ```
@@ -26,19 +30,23 @@ git clone https://github.com/mauriciorfdev/project-users.git
 npm install
 ```
 
-3. Setup `.env` file:
+3. Setup `.env` file for the backend:
 
 ```
 MONGO_URI = "your_string"
+```
+
+3. Setup `.env` file for the frontend:
+
+```
+VITE_API_BASE_URL = "your_string"
 ```
 
 ## Usage
 
 **BACKEND**:
 
-On root directory _(Example: `~/Desktop/project-users`)_:
-
-Run the server: `npm run dev`
+On root directory _(`~/Desktop/project-users`)_ run the server: `npm run dev`
 
 ```
   Server listen on port 5000...
