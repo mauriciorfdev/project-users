@@ -2,21 +2,24 @@
 
 ## About Project
 
-Simple application using MongoDB, ExpressJS, React & NodeJS. The API can create, retrieve, update and delete Users.
+Simple application using MongoDB, ExpressJS, React & NodeJS. The API can create, retrieve, update and delete Users. For simplicity Users Model/Schema includes name and email via Mongoose. The API is also deployed on Render for a direct review.
 
-### _Demo_
+## Demo
+
+### 🔗 [See the API deployed on Render](https://project-users-frontend.onrender.com)
 
 ![demo](/assets/images/crud.gif)
 
-### _Screens (on mobile)_
+### _Mobile Screenshots_
 
 ![screens](/assets/images/screens.png)
 
 ## Installation
 
-> Backend Directory: _`~/Desktop/project-users`_
+### _Notes:_
 
-> Frontend Directory: _`~/Desktop/project-users/frontend`_
+> _Backend Directory: `~/Desktop/project-users`_ \
+> _Frontend Directory: `~/Desktop/project-users/frontend`_
 
 1. Clone the repo:
 
@@ -24,23 +27,11 @@ Simple application using MongoDB, ExpressJS, React & NodeJS. The API can create,
 git clone https://github.com/mauriciorfdev/project-users.git
 ```
 
-2. Install NPM Packages (_On Backend & Frontend_):
+2. Install NPM Packages (_On Backend & Frontend_): `npm install`
 
-```
-npm install
-```
+3. Setup `.env` file for the backend: `MONGO_URI = "your_string"`
 
-3. Setup `.env` file for the backend:
-
-```
-MONGO_URI = "your_string"
-```
-
-3. Setup `.env` file for the frontend:
-
-```
-VITE_API_BASE_URL = "your_string"
-```
+4. Setup `.env` file for the frontend: `VITE_API_BASE_URL = "your_string"`
 
 ## Usage
 
@@ -55,9 +46,7 @@ On root directory _(`~/Desktop/project-users`)_ run the server: `npm run dev`
 
 **FRONTEND**:
 
-In another terminal change to the frontend directory: `cd frontend/`
-
-And run the server: `npm run dev`
+In another terminal change directory: `cd frontend/` and run the server: `npm run dev`
 
 ```
 VITE v6.0.7  ready in 791 ms
